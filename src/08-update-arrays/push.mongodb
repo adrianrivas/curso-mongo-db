@@ -1,0 +1,39 @@
+use("sample_db_adrian")
+
+// db.inventory.find({_id: 4})
+
+// Add an element to an array
+// db.inventory.updateOne({_id: 4}, {
+//   $push: {
+//     tags: "headphone"
+//   }
+// })
+
+// Add more than 1 element to an array
+// db.inventory.updateOne({_id: 4}, {
+//   $push: {
+//     tags: {
+//         $each: ['computer', 'speaker', 'smart_watch']
+//     }
+//   }
+// })
+
+// Delete an element from an array
+// db.inventory.updateOne({_id: 4}, {
+//   $pull: {
+//     tags: 'computer'
+//   }
+// })
+
+// Delete more than one element from an array
+db.inventory.updateOne({_id: 4}, {
+  $pull: {
+    tags: {
+        $in: ['appliance', 'school', 'computer']
+    }
+  }
+})
+
+result = db.inventory.find({_id: 4})
+
+result

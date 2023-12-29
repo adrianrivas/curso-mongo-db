@@ -1,0 +1,18 @@
+use("sample_db_adrian")
+
+// UPDATE sample_db_adrian.iot SET readings not in (3,4)  WHERE sensor = "A001"
+// db.iot.updateMany(
+//   // query
+//   { sensor: "A001" },
+//   // update
+//   {
+//     $pull: {
+//       readings: { $gte: 3 }
+//     }
+//   }
+// )
+
+// db.iot.find()
+
+//SELECT DISTINCT db.sensor FROM sample_db_adrian.iot db
+db.iot.distinct('sensor')

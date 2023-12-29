@@ -1,0 +1,17 @@
+use("sample_db_adrian")
+
+//Operador $eq: Equal - Operador $ne: Not Equal
+// Using $eq
+// SELECT * from sample_db_adrian.inventory WHERE qty = 20
+// db.inventory.find({ qty: 20 })
+// db.inventory.find({ qty: { $eq: 20 } })
+
+// SELECT * from sample_db_adrian.inventory WHERE item.code = "123"
+// Búsqueda por subdocumentos (documentos dentro de documentos)
+// db.inventory.find({ "item.code": "123" })
+// db.inventory.find({ "item.code": { $eq: "123" } })
+
+// Using $ne
+// SELECT * from sample_db_adrian.inventory WHERE qty <> 20
+db.inventory.find({ qty: { $ne: 20 } })
+

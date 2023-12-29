@@ -1,0 +1,20 @@
+use("sample_db_adrian")
+
+
+// db.getCollectionNames()
+
+// INSERT INTO sample_db_adrian.products (_id, name, price) VALUES (1, "Product 1", 1000)
+// db.products.insertOne({
+//   _id: 1,
+//   name: "Product 1",
+//   price: 1000
+// })
+
+// INSERT INTO sample_db_adrian.products (_id, name, price) VALUES ("Product 2", 100)
+db.products.insertOne({
+  name: "Product 2",
+  price: 100
+})
+
+// SELECT * from sample_db_adrian.products
+db.products.find()

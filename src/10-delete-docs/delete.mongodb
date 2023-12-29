@@ -1,0 +1,15 @@
+use("sample_db_adrian")
+
+// DELETE * FROM sample_db_adrian.products WHERE _id = 1
+// db.products.deleteOne({ _id: 1 })
+
+// DELETE * FROM sample_db_adrian.products WHERE price = 100
+// db.products.deleteMany({ price: 100 })
+
+// DELETE * FROM sample_db_adrian.products
+db.products.deleteMany({})
+
+// DROP TABLE sample_db_adrian.products
+// db.products.drop()
+
+db.products.find()

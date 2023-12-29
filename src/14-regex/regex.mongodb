@@ -1,0 +1,11 @@
+use("sample_db_adrian")
+
+// db.inventory.find({ "item.description": "Single line description." })
+
+//SELECT * FROM sample_db_adrian.inventory WHERE item.description LIKE '%line%'
+// db.inventory.find({ "item.description": { $regex: /line/ } })
+//SELECT * FROM sample_db_adrian.inventory WHERE item.description ILIKE '%line%'
+// db.inventory.find({ "item.description": { $regex: /LINE/i } })
+// db.inventory.find({ "item.description": { $regex: /line$/i } })
+// db.inventory.find({ "item.description": { $regex: /^single/i } })
+db.inventory.find({ "item.description": { $regex: /^s/im } })

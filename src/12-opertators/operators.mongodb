@@ -1,0 +1,33 @@
+use("sample_db_adrian")
+
+
+// Using $gt (>) & $gte (>=)
+// SELECT * from sample_db_adrian.inventory WHERE qty > 20
+// db.inventory.find({ qty: { $gt: 20 } })
+// SELECT * from sample_db_adrian.inventory WHERE qty >= 20
+// db.inventory.find({ qty: { $gte: 20 } })
+
+// Using $lt (<) & $lte (<=)
+// SELECT * from sample_db_adrian.inventory WHERE qty < 20
+// db.inventory.find({ qty: { $lt: 20 } })
+// SELECT * from sample_db_adrian.inventory WHERE qty <= 20
+// db.inventory.find({ qty: { $lte: 20 } })
+
+// Join
+// SELECT * from sample_db_adrian.inventory WHERE item.code <> "123" AND (qty >= 20 AND <= 25)
+// db.inventory.find({ qty: { $gte: 25, $lte: 35 } })
+db.inventory.find({
+  "item.code": { $ne: "123" },
+  qty: { $gte: 20, $lte: 25 }
+})
+
+// db.inventory.find()
+// // db.inventory.find({ tags: {$in: ['A']}})
+// db.inventory.find({ tags: {
+//     $elemMatch:{
+//       0:{
+//         $in: ['A']
+//       }
+//     }
+//   }
+// })

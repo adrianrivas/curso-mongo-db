@@ -1,0 +1,10 @@
+use("sample_db_adrian")
+
+// db.monthlyBudget.find({ spent: {$gte: 100} })
+
+// SELECT * FROM sample_db_adrian.monthlyBudget WHERE spent >= budget
+db.monthlyBudget.find({
+  $expr: {
+    $gte: ["$spent", "$budget"]
+  }
+})

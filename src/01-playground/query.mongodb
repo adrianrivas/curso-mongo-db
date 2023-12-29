@@ -1,0 +1,8 @@
+//Seleccionar base de datos del cual extraer la información
+use("sample_training")
+
+//SELECT z.* FROM sample_training.zips as z WHERE z.state = 'NY'
+db.zips.find({ state: "NY" })
+
+//SELECT count(z.*) FROM sample_training.zips as z WHERE z.state = 'NY'
+db.zips.find({ state: "NY" }).count()

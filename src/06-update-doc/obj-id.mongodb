@@ -1,0 +1,15 @@
+use("sample_db_adrian")
+
+// UPDATE sample_db_adrian.products SET price = price + 900 WHERE _id = ObjectId("65886d61072874819a8c1688")
+db.products.updateOne(
+  // query
+  {_id: ObjectId("65886d61072874819a8c1688")},
+  // change => operators
+  {
+    $inc: {
+      price: 900,
+    }
+  }
+)
+
+db.products.find()

@@ -1,0 +1,32 @@
+use("sample_db_adrian")
+
+// DELETE * FROM sample_db_adrian.products
+db.products.drop()
+
+// INSERT INTO sample_db_adrian.products (_id, name, price) VALUES (1, "Product 1", 100), (2, "Product 2", 20), (3, "Product 3", 120), (4, "Product 4", 120)
+db.products.insertMany([
+  {
+    _id: 1,
+    name: "Product 1",
+    price: 100
+  },
+  {
+    _id: 2,
+    name: "Product 2",
+    price: 20
+  },
+  {
+    _id: 3,
+    name: "Product 3",
+    price: 120
+  },
+  {
+    _id: 4,
+    name: "Product 4",
+    price: 120
+  }
+], {
+  ordered: true
+})
+
+db.products.find()

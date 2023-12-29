@@ -1,0 +1,57 @@
+use("sample_training")
+
+// and implict
+// SELECT * FROM sample_training.inspections WHERE sector = "Tax Preparers - 891" AND result: "Unable to Locate"
+// db.inspections.find({
+//   sector: "Tax Preparers - 891",
+//   result: "Unable to Locate"
+// }).count() // 6
+
+// and explict
+// $and [{}, {}, {}]
+// SELECT * FROM sample_training.inspections WHERE sector = "Tax Preparers - 891" AND result: "Unable to Locate"
+// db.inspections.find({
+//   $and: [
+//     { sector: "Tax Preparers - 891" },
+//     { result: "Unable to Locate" }
+//   ]
+// }).count() // 6
+
+// or
+// $or [{}, {}, {}]
+// SELECT * FROM sample_training.inspections WHERE sector = "Tax Preparers - 891" OR result: "Unable to Locate"
+// db.inspections.find({
+//   $or: [
+//     { sector: "Tax Preparers - 891" },
+//     { result: "Unable to Locate" }
+//   ]
+// }).count()
+
+// db.inspections.find().count()
+
+// nor
+// $nor [{}, {}, {}]
+// SELECT * FROM sample_training.inspections WHERE NOT(sector = "Tax Preparers - 891" OR result: "Unable to Locate")
+// db.inspections.find({
+//   $nor: [
+//     { sector: "Tax Preparers - 891" },
+//     { result: "Unable to Locate" }
+//   ]
+// }).count()
+
+// SELECT result FROM sample_training.inspections WHERE NOT(result: "No Violation Issued" OR result: "Unable to Locate")
+// db.inspections.find({
+//   $nor: [
+//     { result: "No Violation Issued" },
+//     { result: "Unable to Locate" }
+//   ]
+// } , {
+//   result: 1,
+//   _id: 0
+// })
+
+// SELECT * FROM sample_training.inspections WHERE NOT LIKE '%Unable to Locate%'
+// $not = {}
+db.inspections.find({
+  result: { $not: { $regex: /Unable to Locate/ } }
+})

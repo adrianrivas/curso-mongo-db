@@ -1,0 +1,9 @@
+use("sample_training")
+
+//SELECT tripduration, usertype FROM sample_training.trips WHERE tripduration >= 500
+db.trips.find(
+  // query
+  { tripduration: { $gte: 500 } },
+  // projection
+  { tripduration: 1, usertype: 1, _id: 0}
+)

@@ -1,0 +1,53 @@
+use("sample_training")
+
+// db.zips.find({city: 'CLEVELAND'})
+
+// UPDATE sample_training.zips SET pop = pop + 1000 WHERE city = "CLEVELAND"
+// db.zips.updateMany(
+//   // query
+//   { city: "CLEVELAND" },
+//   // update - operators
+//   {
+//     $inc: {
+//       pop: 1000
+//     }
+//   }
+// )
+
+// ALTER TABLE sample_training.zips ADD newAttr varchar(255) WHERE city = "CLEVELAND"
+// db.zips.updateMany(
+//   // query
+//   { city: "CLEVELAND" },
+//   // update - operators
+//   {
+//     $set:{
+//       newAttr: "New Attribute"
+//     }
+//   }
+// )
+
+// ALTER TABLE sample_training.zips RENAME COLUMN newAttr TO new_name_attribute WHERE city = "CLEVELAND"
+// db.zips.updateMany(
+//   // query
+//   { city: "CLEVELAND" },
+//   // update - operators
+//   {
+//     $rename:{
+//       newAttr: "new_name_attribute"
+//     }
+//   }
+// )
+
+// ALTER TABLE sample_training.zips DROP COLUMN new_name_attribute WHERE city = "CLEVELAND"
+db.zips.updateMany(
+  // query
+  { city: "CLEVELAND" },
+  // update - operators
+  {
+    $unset:{
+      new_name_attribute: ""
+    }
+  }
+)
+
+db.zips.find({city: 'CLEVELAND'})

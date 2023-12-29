@@ -1,0 +1,15 @@
+use("sample_db_adrian")
+
+// UPDATE sample_db_adrian.products SET price = price + 100 WHERE _id = 2
+db.products.updateOne(
+  // query
+  {_id: 2},
+  // change => operators
+  {
+    $inc: {
+      price: 100,
+    }
+  }
+)
+
+db.products.find()

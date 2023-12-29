@@ -1,0 +1,41 @@
+use("sample_db_adrian")
+
+// $in , values & arrays
+// db.inventory.find({ qty: { $in: [20, 25]} })
+// db.inventory.find({ tags: { $in: ["book", "electronics"]} })
+
+// $nin , values & arrays
+// db.inventory.find({ qty: { $nin: [20, 25]} })
+// db.inventory.find({ tags: { $nin: ["book", "electronics"]} })
+
+// db.inventory.find({ tags: "book" })
+// db.inventory.find({ tags: ["school", "book"] })
+// db.inventory.find({ tags: ["book", "school"] })
+
+// $all finds arrays that have all of specific elements without taking the order.
+// arrays $all
+// db.inventory.find({ tags: {$all: ["book", "school"]} })
+
+// $size finds arrays that have a number specified of elements
+// $size
+// db.inventory.find({ tags: {$size: 2} })
+
+// $elemMatch allows to iterate the elements of an array
+// $elemMatch
+// db.survey.find({ results: { $elemMatch: { product: "xyz" }} })
+// db.survey.find({
+//   results:{
+//     $elemMatch: {
+//       product: "xyz",
+//       score: { $gte: 7 }
+//     }}
+//   })
+
+// $expr allows to compare two expressions between each other
+db.inventory.find(
+    {
+        $expr: {
+            $gte: [ { $size: "$tags" }, 2]
+        }
+    }
+)
